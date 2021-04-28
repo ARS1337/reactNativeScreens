@@ -34,7 +34,7 @@ Tarjeta digital- Digital card
 
 Desactivar- Deactivate
 
-Últimos movimientos- Últimos movimientos
+Últimos movimientos- Last movements
 
 Su pago en efectivo- Your payment in cash
 
@@ -51,6 +51,12 @@ Detalle de tarjeta- Card detail
 Saldo disponible- Available balance
 
 Cuenta *37265- Account * 37265
+
+Movimiento BBVA - BBVA movement
+
+Transferencia interbancaria-Interbank transfer
+
+
 */
 
 import React from 'react';
@@ -71,6 +77,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import DetailsAccount from './screens/DetailsAccount';
 import Login from './screens/Login';
 import Splash from './screens/Splash';
 
@@ -79,7 +86,8 @@ const App: () => Node = () => {
     <SafeAreaView>
       <StatusBar />
       {/* <Splash /> */}
-      <Login />
+      {/* <Login /> */}
+      <DetailsAccount />
     </SafeAreaView>
   );
 };

@@ -10,7 +10,7 @@ function Login(props) {
           source={require('../imagess/IconOpenMenu.png')}
         />
         <View style={styles.heading}>
-          <Image source={require('../imagess/BBVA_2019.png')} />
+          <Image source={require('../imagess/BBVA_2019Login.png')} />
         </View>
       </View>
       <View style={styles.account}>
