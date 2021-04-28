@@ -134,42 +134,60 @@ function DetailsAccount(props) {
       </View>
       <View>
         <View style={[styles.flexRow, styles.spaceBetween]}>
-          <Text>Last movements</Text>
+          <Text
+            style={[
+              styles.font16Bold,
+              {color: '#004481', paddingBottom: 5, paddingTop: 10},
+            ]}>
+            Last movements
+          </Text>
           <Image source={require('../imagess/IconSearch.png')} />
         </View>
-        <View style={{marginleft: 20, backgroundColor: 'grey'}}>
-          <View>
+        <View>
+          <View style={styles.transactionCenter}>
             <View style={[styles.flexRow, styles.spaceBetween]}>
-              <Text>Your payment in cash</Text>
-              <Text>+ $ 1,600.00</Text>
+              <Text style={[styles.font15Medium]}>Your payment in cash</Text>
+              <Text style={([styles.font16Bold], {color: '#5FBE83'})}>
+                + $ 1,600.00
+              </Text>
             </View>
             <View style={[styles.flexRow, styles.spaceBetween]}>
-              <Text> BBVA movement</Text>
-              <Text>Today</Text>
+              <Text style={[styles.font10Regular]}> BBVA movement</Text>
+              <Text style={[styles.font10Regular]}>Today</Text>
             </View>
           </View>
-          <View>
+          <View style={styles.transactionCenter}>
             <View style={[styles.flexRow, styles.spaceBetween]}>
-              <Text>Spei enviado azteca</Text>
-              <Text>- $ 1,600.00</Text>
+              <Text style={[styles.font15Medium]}>Spei enviado azteca</Text>
+              <Text style={([styles.font16Bold], {color: '#E06273'})}>
+                - $ 1,600.00
+              </Text>
             </View>
             <View style={[styles.flexRow, styles.spaceBetween]}>
-              <Text> Interbank transfer</Text>
-              <Text>Today</Text>
+              <Text style={[styles.font10Regular]}> Interbank transfer</Text>
+              <Text style={[styles.font10Regular]}>Today</Text>
             </View>
           </View>
         </View>
       </View>
       <View>
-        <Text>January 2</Text>
-        <View>
+        <Text
+          style={[
+            styles.font16Bold,
+            {color: '#004481', paddingBottom: 5, paddingTop: 10},
+          ]}>
+          January 2
+        </Text>
+        <View style={styles.transactionCenter}>
           <View style={[styles.flexRow, styles.spaceBetween]}>
-            <Text>Your payment in cash</Text>
-            <Text>+ $ 1,600.00</Text>
+            <Text style={[styles.font15Medium]}>Your payment in cash</Text>
+            <Text style={[styles.font16Bold, {color: '#092D5D'}]}>
+              + $ 1,600.00
+            </Text>
           </View>
           <View style={[styles.flexRow, styles.spaceBetween]}>
-            <Text> BBVA movement</Text>
-            <Text>Today</Text>
+            <Text style={[styles.font10Regular]}> BBVA movement</Text>
+            <Text style={[styles.font10Regular]}>Today</Text>
           </View>
         </View>
       </View>
@@ -183,6 +201,20 @@ const styles = StyleSheet.create({
     display: 'flex',
     height: '100%',
     padding: 10,
+  },
+  font16Bold: {
+    fontFamily: 'EuclidCircularA-Bold',
+    fontSize: 16,
+  },
+  font10Regular: {
+    fontFamily: 'EuclidCircularA-Regular',
+    fontSize: 10,
+  },
+  transactionCenter: {
+    width: '80%',
+    alignSelf: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   alignCenter: {
     display: 'flex',
@@ -208,6 +240,11 @@ const styles = StyleSheet.create({
     color: '#004481',
     fontSize: 20,
     fontFamily: 'EuclidCircularA-Bold',
+  },
+  font15Medium: {
+    fontFamily: 'EuclidCircularA-Medium',
+    fontSize: 15,
+    color: '#163F76',
   },
   font11Medium: {
     fontFamily: 'EuclidCircularA-Medium',
