@@ -80,6 +80,7 @@ import {
 import DetailsAccount from './screens/DetailsAccount';
 import Login from './screens/Login';
 import Splash from './screens/Splash';
+import Home from './screens/Home';
 
 const App: () => Node = () => {
   return (
@@ -87,7 +88,8 @@ const App: () => Node = () => {
       <StatusBar />
       {/* <Splash /> */}
       {/* <Login /> */}
-      <DetailsAccount />
+      {/* <DetailsAccount /> */}
+      <Home />
     </SafeAreaView>
   );
 };

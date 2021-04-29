@@ -78,6 +78,7 @@ function DetailsAccount(props) {
           <Image source={require('../imagess/slideLock.png')} />
         </View>
       </View>
+
       <View style={styles.holdsCircleIcons}>
         <View style={[styles.flex25]}>
           <View
@@ -132,6 +133,7 @@ function DetailsAccount(props) {
           <Text style={[styles.font11Medium]}>6 more</Text>
         </View>
       </View>
+
       <View>
         <View style={[styles.flexRow, styles.spaceBetween]}>
           <Text
