@@ -1,145 +1,187 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Switch,
+  TouchableOpacity,
+} from 'react-native';
+import {useState} from 'react';
 
 function DetailsAccount(props) {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const {account, showAccount} = props;
+
   return (
     <View style={styles.background}>
-      <View style={[styles.title, styles.flexRow, styles.spaceBetween]}>
-        <Image source={require('../imagess/IconLeft.png')} />
-        <Text style={styles.accountTitle}> Account * 37265</Text>
-        <Image source={require('../imagess/AccountImageDetails.png')} />
-      </View>
-
-      <View style={styles.card}>
-        <View style={styles.cardRow}>
-          <Image source={require('../imagess/BBVA_2019DetailsCard.png')} />
-          <Image source={require('../imagess/3DotsDetails.png')} />
+      <View
+        style={{
+          flex: 0.92,
+          alignItems: 'center',
+          width: '100%',
+          backgroundColor: '#E5F0F6',
+        }}>
+        <View style={[styles.title, styles.flexRow, styles.spaceBetween]}>
+          <TouchableOpacity
+            onPress={() => {
+              showAccount(false);
+            }}>
+            <Image source={require('../imagess/IconLeft.png')} />
+          </TouchableOpacity>
+          <Text style={styles.accountTitle}> Account * 37265</Text>
+          <Image source={require('../imagess/AccountImageDetails.png')} />
         </View>
-        <Text
-          style={[
-            styles.whiteColor,
-            {fontFamily: 'EuclidCircularA-Medium', fontSize: 40},
-          ]}>
-          $20,000.00
-        </Text>
-        <Text
-          style={[
-            styles.whiteColor,
-            {fontFamily: 'EuclidCircularA-Regular', fontSize: 12},
-          ]}>
-          Available balance
-        </Text>
-        <View style={styles.cardRow}>
+
+        <View style={styles.card}>
+          <View style={styles.cardRow}>
+            <Image source={require('../imagess/BBVA_2019DetailsCard.png')} />
+            <Image source={require('../imagess/3DotsDetails.png')} />
+          </View>
           <Text
             style={[
               styles.whiteColor,
-              {fontFamily: 'EuclidCircularA-Medium', fontSize: 17},
+              {fontFamily: 'EuclidCircularA-Medium', fontSize: 40},
             ]}>
-            001ah7297
+            $20,000.00
           </Text>
-          <Image source={require('../imagess/Visa.png')} />
+          <Text
+            style={[
+              styles.whiteColor,
+              {fontFamily: 'EuclidCircularA-Regular', fontSize: 12},
+            ]}>
+            Available balance
+          </Text>
+          <View style={styles.cardRow}>
+            <Text
+              style={[
+                styles.whiteColor,
+                {fontFamily: 'EuclidCircularA-Medium', fontSize: 17},
+              ]}>
+              001ah7297
+            </Text>
+            <Image source={require('../imagess/Visa.png')} />
+          </View>
         </View>
       </View>
-      <View
-        style={[
-          styles.flexRow,
-          ,
-          {justifyContent: 'space-around', alignItems: 'center', margin: 10},
-        ]}>
-        <View style={[styles.flexRow, {alignItems: 'center'}]}>
-          <Image source={require('../imagess/IconCreditCard.png')} />
-          <Text
-            style={{
-              fontFamily: 'EuclidCircularA-Medium',
-              fontSize: 12,
-              marginLeft: 5,
-              color: '#004481',
-            }}>
-            Card detail
-          </Text>
-        </View>
+
+      <View style={{backgroundColor: 'white', marginVertical: 15}}>
         <View
           style={[
             styles.flexRow,
+            ,
             {
-              alignItems: 'center',
               justifyContent: 'space-around',
-              width: '40%',
+              alignItems: 'center',
+              margin: 10,
+              backgroundColor: 'white',
             },
           ]}>
-          <Text
-            style={{
-              fontFamily: 'EuclidCircularA-Medium',
-              fontSize: 12,
-              color: '#004481',
-            }}>
-            Turn off card
-          </Text>
-          <Image source={require('../imagess/slideLock.png')} />
+          <View style={[styles.flexRow, {alignItems: 'center'}]}>
+            <Image source={require('../imagess/IconCreditCard.png')} />
+            <Text
+              style={{
+                fontFamily: 'EuclidCircularA-Medium',
+                fontSize: 12,
+                marginLeft: 5,
+                color: '#004481',
+              }}>
+              Card detail
+            </Text>
+          </View>
+          <View
+            style={[
+              styles.flexRow,
+              {
+                alignItems: 'center',
+                justifyContent: 'space-around',
+                width: '40%',
+              },
+            ]}>
+            <Text
+              style={{
+                fontFamily: 'EuclidCircularA-Medium',
+                fontSize: 12,
+                color: '#004481',
+              }}>
+              Turn off card
+            </Text>
+            <Switch onValueChange={toggleSwitch} value={isEnabled} />
+          </View>
+        </View>
+        <View style={styles.holdsCircleIcons}>
+          <View style={[styles.flex25]}>
+            <View
+              style={[
+                styles.circleShape,
+                styles.circle1,
+                styles.alignCenter,
+                styles.justifyCenter,
+                styles.MarginBottom5,
+              ]}>
+              <Image source={require('../imagess/IconShopping.png')} />
+            </View>
+            <Text style={[styles.font11Medium]}> Pay service</Text>
+          </View>
+          <View style={[styles.flex25]}>
+            <View
+              style={[
+                styles.circleShape,
+                styles.circle2,
+                styles.alignCenter,
+                styles.justifyCenter,
+                styles.MarginBottom5,
+              ]}>
+              <Image source={require('../imagess/IconMoney.png')} />
+            </View>
+            <Text style={[styles.font11Medium]}>To transfer</Text>
+          </View>
+          <View style={[styles.flex25]}>
+            <View
+              style={[
+                styles.circleShape,
+                styles.circle3,
+                styles.alignCenter,
+                styles.justifyCenter,
+                styles.MarginBottom5,
+              ]}>
+              <Image source={require('../imagess/IconArrow.png')} />
+            </View>
+            <Text style={[styles.font11Medium]}>withdrawal</Text>
+          </View>
+          <View style={[styles.flex25]}>
+            <View
+              style={[
+                styles.circleShape,
+                styles.circle4,
+                styles.alignCenter,
+                styles.justifyCenter,
+                styles.MarginBottom5,
+              ]}>
+              <Image source={require('../imagess/3DotsDetails.png')} />
+            </View>
+            <Text style={[styles.font11Medium]}>6 more</Text>
+          </View>
         </View>
       </View>
 
-      <View style={styles.holdsCircleIcons}>
-        <View style={[styles.flex25]}>
-          <View
-            style={[
-              styles.circleShape,
-              styles.circle1,
-              styles.alignCenter,
-              styles.justifyCenter,
-              styles.MarginBottom5,
-            ]}>
-            <Image source={require('../imagess/IconShopping.png')} />
-          </View>
-          <Text style={[styles.font11Medium]}> Pay service</Text>
-        </View>
-        <View style={[styles.flex25]}>
-          <View
-            style={[
-              styles.circleShape,
-              styles.circle2,
-              styles.alignCenter,
-              styles.justifyCenter,
-              styles.MarginBottom5,
-            ]}>
-            <Image source={require('../imagess/IconMoney.png')} />
-          </View>
-          <Text style={[styles.font11Medium]}>To transfer</Text>
-        </View>
-        <View style={[styles.flex25]}>
-          <View
-            style={[
-              styles.circleShape,
-              styles.circle3,
-              styles.alignCenter,
-              styles.justifyCenter,
-              styles.MarginBottom5,
-            ]}>
-            <Image source={require('../imagess/IconArrow.png')} />
-          </View>
-          <Text style={[styles.font11Medium]}>withdrawal</Text>
-        </View>
-        <View style={[styles.flex25]}>
-          <View
-            style={[
-              styles.circleShape,
-              styles.circle4,
-              styles.alignCenter,
-              styles.justifyCenter,
-              styles.MarginBottom5,
-            ]}>
-            <Image source={require('../imagess/3DotsDetails.png')} />
-          </View>
-          <Text style={[styles.font11Medium]}>6 more</Text>
-        </View>
-      </View>
-
-      <View>
-        <View style={[styles.flexRow, styles.spaceBetween]}>
+      <View style={{backgroundColor: 'white', flex: 0.5}}>
+        <View
+          style={[
+            styles.flexRow,
+            styles.spaceBetween,
+            {paddingHorizontal: 20, alignItems: 'center'},
+          ]}>
           <Text
             style={[
               styles.font16Bold,
-              {color: '#004481', paddingBottom: 5, paddingTop: 10},
+              {
+                color: '#004481',
+                paddingBottom: 5,
+                paddingTop: 10,
+                paddingHorizontal: 10,
+              },
             ]}>
             Last movements
           </Text>
@@ -149,34 +191,49 @@ function DetailsAccount(props) {
           <View style={styles.transactionCenter}>
             <View style={[styles.flexRow, styles.spaceBetween]}>
               <Text style={[styles.font15Medium]}>Your payment in cash</Text>
-              <Text style={([styles.font16Bold], {color: '#5FBE83'})}>
+              <Text style={[styles.font16Bold, {color: '#5FBE83'}]}>
                 + $ 1,600.00
               </Text>
             </View>
             <View style={[styles.flexRow, styles.spaceBetween]}>
-              <Text style={[styles.font10Regular]}> BBVA movement</Text>
-              <Text style={[styles.font10Regular]}>Today</Text>
+              <Text style={[styles.font10Regular, styles.colorLightBlue]}>
+                {' '}
+                BBVA movement
+              </Text>
+              <Text style={[styles.font10Regular, styles.colorLightBlue]}>
+                Today
+              </Text>
             </View>
           </View>
           <View style={styles.transactionCenter}>
             <View style={[styles.flexRow, styles.spaceBetween]}>
               <Text style={[styles.font15Medium]}>Spei enviado azteca</Text>
-              <Text style={([styles.font16Bold], {color: '#E06273'})}>
+              <Text style={[[styles.font16Bold], {color: '#E06273'}]}>
                 - $ 1,600.00
               </Text>
             </View>
             <View style={[styles.flexRow, styles.spaceBetween]}>
-              <Text style={[styles.font10Regular]}> Interbank transfer</Text>
-              <Text style={[styles.font10Regular]}>Today</Text>
+              <Text style={[styles.font10Regular, styles.colorLightBlue]}>
+                {' '}
+                Interbank transfer
+              </Text>
+              <Text style={[styles.font10Regular, styles.colorLightBlue]}>
+                Today
+              </Text>
             </View>
           </View>
         </View>
       </View>
-      <View>
+      <View style={{backgroundColor: 'white'}}>
         <Text
           style={[
             styles.font16Bold,
-            {color: '#004481', paddingBottom: 5, paddingTop: 10},
+            {
+              color: '#004481',
+              paddingBottom: 5,
+              paddingTop: 10,
+              marginLeft: 30,
+            },
           ]}>
           January 2
         </Text>
@@ -188,8 +245,13 @@ function DetailsAccount(props) {
             </Text>
           </View>
           <View style={[styles.flexRow, styles.spaceBetween]}>
-            <Text style={[styles.font10Regular]}> BBVA movement</Text>
-            <Text style={[styles.font10Regular]}>Today</Text>
+            <Text style={[styles.font10Regular, styles.colorLightBlue]}>
+              {' '}
+              BBVA movement
+            </Text>
+            <Text style={[styles.font10Regular, styles.colorLightBlue]}>
+              Today
+            </Text>
           </View>
         </View>
       </View>
@@ -199,10 +261,12 @@ function DetailsAccount(props) {
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: 'white',
+    backgroundColor: '#E5F0F6',
     display: 'flex',
     height: '100%',
-    padding: 10,
+  },
+  colorLightBlue: {
+    color: '#8294CC',
   },
   font16Bold: {
     fontFamily: 'EuclidCircularA-Bold',
@@ -233,10 +297,11 @@ const styles = StyleSheet.create({
   },
   title: {
     alignItems: 'center',
-    paddingLeft: 5,
-    paddingRight: 5,
-    padding: 5,
-    marginBottom: 5,
+    alignItems: 'flex-start',
+    padding: 25,
+    width: '100%',
+    height: '60%',
+    backgroundColor: 'white',
   },
   accountTitle: {
     color: '#004481',
@@ -261,14 +326,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 7,
     marginBottom: 15,
-    padding: 10,
+    padding: 15,
+    width: '95%',
+    position: 'absolute',
+    top: '30%',
   },
   cardRow: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    padding: 10,
+    padding: 20,
   },
   whiteColor: {
     color: 'white',

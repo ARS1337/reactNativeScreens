@@ -59,7 +59,7 @@ Transferencia interbancaria-Interbank transfer
 
 */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -83,12 +83,14 @@ import Splash from './screens/Splash';
 import Home from './screens/Home';
 
 const App: () => Node = () => {
+  const [splash, showSplash] = useState(true);
+  setTimeout(() => {
+    showSplash(false);
+  }, 1200);
   return (
     <SafeAreaView>
       <StatusBar />
-      {/* <Splash /> */}
-      {/* <Login /> */}
-      {/* <DetailsAccount /> */}
+      {/* {splash ? <Splash /> : <Login />} */}
       <Home />
     </SafeAreaView>
   );
