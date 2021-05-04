@@ -18,10 +18,33 @@ function Home(props) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [account, showAccount] = useState(false);
+  const [icons, setIcons] = useState([
+    {
+      show: true,
+      selected: require('../imagess/fountainpenPoint.png'),
+      unselected: require('../imagess/IconFountain.png'),
+    },
+    {
+      show: false,
+      selected: require('../imagess/IconMessageSelected.png'),
+      unselected: require('../imagess/IconMessage.png'),
+    },
+    {
+      show: false,
+      selected: require('../imagess/IconHealthSelected.png'),
+      unselected: require('../imagess/Path24.png'),
+    },
+    {
+      show: false,
+      selected: require('../imagess/IconPlusSelected.png'),
+      unselected: require('../imagess/IconPlus.png'),
+    },
+  ]);
 
   if (account) {
     return <DetailsAccount account={account} showAccount={showAccount} />;
-  } else {
+  } else if (icons[0].show == true) {
+    console.log('icon0');
     return (
       <View style={styles.background}>
         <View
@@ -217,7 +240,34 @@ function Home(props) {
           </View>
         </View>
 
-        <Lastbar />
+        <Lastbar icons={icons} setIcons={setIcons} />
+      </View>
+    );
+  } else if (icons[1].show == true) {
+    console.log('icon0');
+
+    return (
+      <View style={{height: '100%'}}>
+        <Text>no new messages</Text>
+        <Lastbar icons={icons} setIcons={setIcons} />
+      </View>
+    );
+  } else if (icons[2].show == true) {
+    console.log('icon0');
+
+    return (
+      <View style={{height: '100%'}}>
+        <Text>new page</Text>
+        <Lastbar icons={icons} setIcons={setIcons} />
+      </View>
+    );
+  } else if (icons[3].show == true) {
+    console.log('icon0');
+
+    return (
+      <View style={{height: '100%'}}>
+        <Text>new page 2</Text>
+        <Lastbar icons={icons} setIcons={setIcons} />
       </View>
     );
   }
