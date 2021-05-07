@@ -81,6 +81,8 @@ import DetailsAccount from './screens/DetailsAccount';
 import Login from './screens/Login';
 import Splash from './screens/Splash';
 import Home from './screens/Home';
+import MiddleMenus from './screens/MiddleMenus';
+import TransactionList from './screens/TransactionList';
 
 const App: () => Node = () => {
   const [splash, showSplash] = useState(true);
@@ -90,29 +92,13 @@ const App: () => Node = () => {
   return (
     <SafeAreaView>
       <StatusBar />
-      {splash ? <Splash /> : <Login />}
+      {/* {splash ? <Splash /> : <Login />} */}
       {/* <Home /> */}
+      {/* <MiddleMenus /> */}
+      <DetailsAccount />
+      {/* <TransactionList /> */}
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

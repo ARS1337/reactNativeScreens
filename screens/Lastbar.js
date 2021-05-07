@@ -12,7 +12,6 @@ function Lastbar(props) {
         <TouchableOpacity
           onPress={() => {
             let temp;
-            // Object.assign(temp, icons);
             temp = JSON.parse(JSON.stringify(icons));
             if (temp[id].show == false) {
               temp.forEach((x, idx, arr) => {
@@ -23,11 +22,19 @@ function Lastbar(props) {
               console.log(id, t);
             }
           }}>
-          {icons[id].show ? (
-            <Image source={icons[id].selected} />
-          ) : (
-            <Image source={icons[id].unselected} />
-          )}
+          <View style={styles.images}>
+            {icons[id].show ? (
+              <Image source={icons[id].selected} />
+            ) : (
+              <Image source={icons[id].unselected} />
+            )}
+            {icons[id].show ? (
+              <Image
+                style={{marginTop: 2}}
+                source={require('../imagess/Ellipse.png')}
+              />
+            ) : null}
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -45,19 +52,25 @@ function Lastbar(props) {
 const styles = StyleSheet.create({
   lastBar: {
     width: '100%',
-    backgroundColor: 'grey',
-    marginTop: 8,
-    padding: 15,
+    backgroundColor: 'white',
+    padding: 10,
     position: 'absolute',
     bottom: 0,
     paddingHorizontal: '10%',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+    flex: 0.5,
   },
   cardOptions: {
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
+  },
+  images: {
+    display: 'flex',
+    alignItems: 'center',
+    height: '100%',
+    minHeight: 35,
   },
 });
 

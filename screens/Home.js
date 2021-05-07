@@ -8,16 +8,19 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   Switch,
+  FlatList,
 } from 'react-native';
 
 import DetailsAccount from './DetailsAccount';
 import Lastbar from './Lastbar';
+import LeftMenu from './LeftMenu';
+import SwitchCustom from './SwitchCustom';
+import MiddleMenus from './MiddleMenus';
 
 function Home(props) {
   const {menu, showMenu} = props;
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [account, showAccount] = useState(false);
+  const [leftMenu, showLeftMenu] = useState(false);
   const [icons, setIcons] = useState([
     {
       show: true,
@@ -43,20 +46,23 @@ function Home(props) {
 
   if (account) {
     return <DetailsAccount account={account} showAccount={showAccount} />;
+  } else if (leftMenu == true) {
+    return <LeftMenu leftMenu={leftMenu} showLeftMenu={showLeftMenu} />;
   } else if (icons[0].show == true) {
     console.log('icon0');
     return (
       <View style={styles.background}>
         <View
           style={{
-            flex: 0.92,
+            flex: 0.4,
             alignItems: 'center',
             width: '100%',
+            paddingBottom: 10,
           }}>
           <View style={[styles.title, styles.flexRow, styles.spaceBetween]}>
             <TouchableWithoutFeedback
               onPress={() => {
-                showMenu(!menu);
+                showLeftMenu(true);
               }}>
               <Image source={require('../imagess/IconOpenMenuHome.png')} />
             </TouchableWithoutFeedback>
@@ -96,6 +102,13 @@ function Home(props) {
               </View>
             </View>
 
+            <View
+              style={{
+                width: '90%',
+                borderWidth: 0.5,
+                borderColor: '#B8CBDC',
+              }}></View>
+
             <View style={[styles.cardRow]}>
               <View>
                 <Text style={[styles.blueColor, styles.font17Medium]}>
@@ -115,131 +128,79 @@ function Home(props) {
           </View>
         </View>
 
-        <View style={styles.holdsCircleIcons}>
-          <View style={[styles.flex25]}>
-            <View
-              style={[
-                styles.circleShape,
-                styles.circle1,
-                styles.alignCenter,
-                styles.justifyCenter,
-                styles.MarginBottom5,
-                ,
-              ]}>
-              <Image source={require('../imagess/IconPlusHome.png')} />
-            </View>
-            <Text style={[styles.font11Medium]}> Opportunities</Text>
+        <View style={{flex: 0.6}}>
+          <View style={{flex: 0.7}}>
+            <MiddleMenus />
           </View>
-          <View style={[styles.flex25]}>
-            <View
-              style={[
-                styles.circleShape,
-                styles.circle2,
-                styles.alignCenter,
-                styles.justifyCenter,
-                styles.MarginBottom5,
-              ]}>
-              <Image source={require('../imagess/3DotsDetails.png')} />
-            </View>
-            <Text style={[styles.font11Medium]}>To Transfer</Text>
-          </View>
+          <View style={styles.bottomCardHome}>
+            <Text style={[styles.colorBlue, styles.font16Bold]}>
+              Your cards
+            </Text>
+            <View style={styles.bottomCardContainer}>
+              <View style={styles.leftCard}>
+                <View style={[styles.leftBlueCard]}>
+                  <View>
+                    <Text style={[styles.MarginBottom5, styles.colorWhite]}>
+                      BBVA
+                    </Text>
+                    <Image
+                      style={styles.MarginBottom5}
+                      source={require('../imagess/IconCardGold.png')}
+                    />
+                    <Text style={[styles.MarginBottom5, styles.colorWhite]}>
+                      *62396
+                    </Text>
+                  </View>
 
-          <View style={[styles.flex25]}>
-            <View
-              style={[
-                styles.circleShape,
-                styles.circle3,
-                styles.alignCenter,
-                styles.justifyCenter,
-                styles.MarginBottom5,
-              ]}>
-              <Image source={require('../imagess/3DotsDetails.png')} />
-            </View>
-            <Text style={[styles.font11Medium]}>Cardless withdrawal</Text>
-          </View>
+                  <View>
+                    <Image
+                      style={styles.MarginBottom5}
+                      source={require('../imagess/Visa.png')}
+                    />
+                  </View>
+                </View>
+                <View style={styles.cardOptions}>
+                  <View style={styles.cardOptionsRow}>
+                    <Image source={require('../imagess/IconCreditCard.png')} />
+                    <Text style={[styles.colorBlue]}> Digital card</Text>
+                  </View>
+                  <View style={styles.cardOptionsRow}>
+                    <Text style={[styles.colorBlue]}>Deactivate</Text>
+                    {/* <Image source={require('../imagess/slideLock.png')} /> */}
+                    <SwitchCustom />
+                  </View>
+                </View>
+              </View>
 
-          <View style={[styles.flex25]}>
-            <View
-              style={[
-                styles.circleShape,
-                styles.circle4,
-                styles.alignCenter,
-                styles.justifyCenter,
-                styles.MarginBottom5,
-              ]}>
-              <Image source={require('../imagess/IconSettingsHome.png')} />
-            </View>
-            <Text style={[styles.font11Medium]}>Pay service</Text>
-          </View>
-        </View>
-
-        <View style={styles.bottomCardHome}>
-          <Text style={[styles.colorBlue, styles.font16Bold]}>Your cards</Text>
-          <View style={styles.bottomCardContainer}>
-            <View style={styles.leftCard}>
-              <View style={[styles.leftBlueCard]}>
+              <View style={[styles.rightWhiteCard]}>
                 <View>
-                  <Text style={[styles.MarginBottom5, styles.colorWhite]}>
+                  <Text
+                    style={[
+                      styles.MarginBottom6,
+                      styles.blueColor,
+                      styles.font16Bold,
+                    ]}>
                     BBVA
                   </Text>
                   <Image
-                    style={styles.MarginBottom5}
+                    style={styles.MarginBottom6}
                     source={require('../imagess/IconCardGold.png')}
                   />
-                  <Text style={[styles.MarginBottom5, styles.colorWhite]}>
+                  <Text style={[styles.MarginBottom6, styles.blueColor]}>
                     *62396
                   </Text>
                 </View>
 
                 <View>
                   <Image
-                    style={styles.MarginBottom5}
-                    source={require('../imagess/Visa.png')}
+                    style={{transform: [{rotate: '90deg'}]}}
+                    source={require('../imagess/VisaBlue.png')}
                   />
                 </View>
-              </View>
-              <View style={styles.cardOptions}>
-                <View style={styles.cardOptionsRow}>
-                  <Image source={require('../imagess/IconCreditCard.png')} />
-                  <Text style={[styles.colorBlue]}> Digital card</Text>
-                </View>
-                <View style={styles.cardOptionsRow}>
-                  <Text style={[styles.colorBlue]}>Deactivate</Text>
-                  {/* <Image source={require('../imagess/slideLock.png')} /> */}
-                  <Switch onValueChange={toggleSwitch} value={isEnabled} />
-                </View>
-              </View>
-            </View>
-
-            <View style={[styles.rightWhiteCard]}>
-              <View>
-                <Text
-                  style={[
-                    styles.MarginBottom6,
-                    styles.blueColor,
-                    styles.font16Bold,
-                  ]}>
-                  BBVA
-                </Text>
-                <Image
-                  style={styles.MarginBottom6}
-                  source={require('../imagess/IconCardGold.png')}
-                />
-                <Text style={[styles.MarginBottom6, styles.blueColor]}>
-                  *62396
-                </Text>
-              </View>
-
-              <View>
-                <Image
-                  style={{transform: [{rotate: '90deg'}]}}
-                  source={require('../imagess/VisaBlue.png')}
-                />
               </View>
             </View>
           </View>
         </View>
-
         <Lastbar icons={icons} setIcons={setIcons} />
       </View>
     );
@@ -282,6 +243,7 @@ const styles = StyleSheet.create({
   },
   background: {
     backgroundColor: '#E5F0FF',
+    // backgroundColor: 'black',
     display: 'flex',
     height: '100%',
     alignItems: 'center',
@@ -315,7 +277,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     margin: 5,
-    padding: 20,
+    padding: 10,
     transform: [{rotate: '270deg'}],
   },
   leftBlueCard: {
@@ -337,29 +299,29 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: 'white',
     padding: 20,
-    marginBottom: 50,
+    marginBottom: 10,
+    height: '50%',
   },
-  holdsCircleIcons: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-evenly',
-    width: '100%',
-    backgroundColor: 'white',
-    padding: 10,
-    marginTop: 10,
-    marginBottom: 20,
-  },
+  // holdsCircleIcons: {
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-evenly',
+  //   alignItems: 'center',
+  //   width: '100%',
+  //   padding: 10,
+  //   height: '90%',
+  //   backgroundColor: 'white',
+  // },
   font11Medium: {
     fontFamily: 'EuclidCircularA-Medium',
     fontSize: 11,
     color: '#4B637A',
   },
-  flex25: {
-    flex: 0.23,
-    flexWrap: 'wrap',
-    alignItems: 'center',
-  },
+  // flex25: {
+  //   flex: 0.23,
+  //   flexWrap: 'wrap',
+  //   alignItems: 'center',
+  // },
   alignCenter: {
     display: 'flex',
     alignItems: 'center',
@@ -368,23 +330,23 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
   },
-  circleShape: {
-    width: 50,
-    height: 50,
-    borderRadius: 150 / 2,
-  },
-  circle1: {
-    backgroundColor: '#3767F0',
-  },
-  circle2: {
-    backgroundColor: '#4CABCE',
-  },
-  circle3: {
-    backgroundColor: '#49D17C',
-  },
-  circle4: {
-    backgroundColor: '#004481',
-  },
+  // circleShape: {
+  //   width: 50,
+  //   height: 50,
+  //   borderRadius: 150 / 2,
+  // },
+  // circle1: {
+  //   backgroundColor: '#3767F0',
+  // },
+  // circle2: {
+  //   backgroundColor: '#4CABCE',
+  // },
+  // circle3: {
+  //   backgroundColor: '#49D17C',
+  // },
+  // circle4: {
+  //   backgroundColor: '#004481',
+  // },
   blueColor: {
     color: '#004481',
   },
@@ -421,14 +383,15 @@ const styles = StyleSheet.create({
   card: {
     alignItems: 'center',
     borderRadius: 7,
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 0,
     backgroundColor: 'white',
     width: '95%',
     position: 'absolute',
-    top: '30%',
+    top: '25%',
   },
   MarginBottom5: {
-    marginBottom: 14,
+    marginBottom: 8,
   },
   MarginBottom6: {
     marginBottom: 8,
@@ -438,7 +401,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    padding: 20,
+    padding: 15,
+    backgroundColor: 'white',
   },
 });
 
