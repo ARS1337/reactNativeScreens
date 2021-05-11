@@ -92,9 +92,9 @@ const App: () => Node = () => {
   return (
     <SafeAreaView>
       <StatusBar />
-      {/* {splash ? <Splash /> : <Login />} */}
+      {splash ? <Splash /> : <Login />}
       {/* <Home /> */}
-      <Login />
+      {/* <Login /> */}
       {/* <MiddleMenus /> */}
       {/* <DetailsAccount /> */}
       {/* <TransactionList /> */}
