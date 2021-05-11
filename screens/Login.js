@@ -9,6 +9,10 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import Home from './Home';
+import {Dimensions} from 'react-native';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function Login(props) {
   const [menu, showMenu] = useState(false);
@@ -17,76 +21,85 @@ function Login(props) {
   if (menu) return <Home menu={menu} showMenu={showMenu} />;
   else {
     return (
-      <View style={styles.background}>
-        <View style={styles.title}>
-          <Image
-            style={styles.menu}
-            source={require('../imagess/IconOpenMenu.png')}
-          />
+      <View>
+        <View style={styles.background}>
+          <View style={styles.title}>
+            <Image
+              style={styles.menu}
+              source={require('../imagess/IconOpenMenu.png')}
+            />
 
-          <View style={styles.heading}>
-            <Image source={require('../imagess/BBVA_2019Login.png')} />
+            <View style={styles.heading}>
+              <Image source={require('../imagess/BBVA_2019Login.png')} />
+            </View>
           </View>
-        </View>
-        <View style={styles.account}>
-          <Image source={require('../imagess/Group2666.png')} />
-        </View>
-        <View>
-          <Text style={styles.greeting}>Hello, Mauricio</Text>
-          <Text style={styles.greetingExtended}>How was your day today?</Text>
-        </View>
-        <View style={styles.passwordContainer}>
-          <Text style={styles.passwordLabel}>Password</Text>
-        </View>
-        <View style={styles.passwordInput}>
-          <TextInput
-            style={styles.password}
-            textContentType={'password'}
-            autoCompleteType={'password'}
-            secureTextEntry={showPassword}
-            onSubmitEditing={e => {
-              showMenu(!menu);
-            }}
-          />
+          <View style={styles.account}>
+            <Image source={require('../imagess/Group2666.png')} />
+          </View>
+          <View>
+            <Text style={styles.greeting}>Hello, Mauricio</Text>
+            <Text style={styles.greetingExtended}>How was your day today?</Text>
+          </View>
+          <View style={styles.passwordContainer}>
+            <Text style={styles.passwordLabel}>Password</Text>
+          </View>
+          <View style={styles.passwordInput}>
+            <TextInput
+              style={styles.password}
+              textContentType={'password'}
+              autoCompleteType={'password'}
+              secureTextEntry={showPassword}
+              onSubmitEditing={e => {
+                showMenu(!menu);
+              }}
+            />
 
-          <TouchableWithoutFeedback
-            onPress={() => {
-              setPassword(!showPassword);
-            }}>
-            <Icon
-              style={styles.featherEye}
-              size={24}
-              color="#004481"
-              name={showPassword ? 'eye-off' : 'eye'}
-            />
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={styles.forgotPasswordContainer}>
-          <Text style={styles.forgotPassword}> I forgot my password</Text>
-        </View>
-        <View style={styles.optionsContainerAll}>
-          <View style={styles.optionsContainer}>
-            <Image
-              style={styles.optionImage}
-              source={require('../imagess/surface1.png')}
-            />
-            <Text style={styles.options}>Mobile Token</Text>
+            <TouchableWithoutFeedback
+              onPress={() => {
+                setPassword(!showPassword);
+              }}>
+              <Icon
+                style={styles.featherEye}
+                size={24}
+                color="#004481"
+                name={showPassword ? 'eye-off' : 'eye'}
+              />
+            </TouchableWithoutFeedback>
           </View>
-          <View style={styles.optionsContainer}>
-            <Image
-              style={styles.optionImage}
-              source={require('../imagess/qrCode.png')}
-            />
-            <Text style={styles.options}>Operation QR + CoDi</Text>
+          <View style={styles.forgotPasswordContainer}>
+            <Text style={styles.forgotPassword}> I forgot my password</Text>
           </View>
-          <View style={styles.optionsContainer}>
-            <Image
-              style={styles.optionImage}
-              source={require('../imagess/phoneCall.png')}
-            />
-            <Text style={styles.options}>BBVA line</Text>
+          <View style={styles.optionsContainerAll}>
+            <View style={styles.optionsContainer}>
+              <Image
+                style={styles.optionImage}
+                source={require('../imagess/surface1.png')}
+              />
+              <Text style={styles.options}>Mobile Token</Text>
+            </View>
+            <View style={styles.optionsContainer}>
+              <Image
+                style={styles.optionImage}
+                source={require('../imagess/qrCode.png')}
+              />
+              <Text style={styles.options}>Operation QR + CoDi</Text>
+            </View>
+            <View style={styles.optionsContainer}>
+              <Image
+                style={styles.optionImage}
+                source={require('../imagess/phoneCall.png')}
+              />
+              <Text style={styles.options}>BBVA line</Text>
+            </View>
           </View>
         </View>
+        <View
+          style={{
+            backgroundColor: '#004481',
+            height: 10,
+            width: '100%',
+            height: windowHeight * 0.05,
+          }}></View>
       </View>
     );
   }
@@ -100,8 +113,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'flex-start',
     width: 'auto',
-    height: '100%',
     padding: 20,
+    height: windowHeight * 0.95,
   },
   title: {
     display: 'flex',
@@ -120,7 +133,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   account: {
-    paddingTop: 50,
+    paddingTop: 35,
   },
   greeting: {
     color: '#004481',
@@ -145,7 +158,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   passwordContainer: {
-    paddingTop: 20,
+    paddingTop: 30,
     flexDirection: 'column',
   },
   passwordInput: {
