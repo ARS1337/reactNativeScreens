@@ -16,6 +16,7 @@ import Lastbar from './Lastbar';
 import LeftMenu from './LeftMenu';
 import SwitchCustom from './SwitchCustom';
 import MiddleMenus from './MiddleMenus';
+import HomeCard from './HomeCard';
 
 function Home(props) {
   const {menu, showMenu} = props;
@@ -57,7 +58,6 @@ function Home(props) {
             flex: 0.4,
             alignItems: 'center',
             width: '100%',
-            paddingBottom: 10,
           }}>
           <View style={[styles.title, styles.flexRow, styles.spaceBetween]}>
             <TouchableWithoutFeedback
@@ -78,7 +78,7 @@ function Home(props) {
           </View>
 
           <View style={styles.card}>
-            <View style={[styles.cardRow]}>
+            <View style={[styles.cardRow, {alignItems: 'center'}]}>
               <Text style={[styles.blueColor, styles.font16Bold]}>
                 YOUR ACCOUNTS
               </Text>
@@ -129,10 +129,18 @@ function Home(props) {
         </View>
 
         <View style={{flex: 0.6}}>
-          <View style={{flex: 0.7}}>
+          <View style={{flex: 0.3}}>
             <MiddleMenus />
           </View>
-          <View style={styles.bottomCardHome}>
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          <View style={{flex: 0.55}}>
+            <HomeCard />
+          </View>
+          {/* <View style={styles.bottomCardHome}>
             <Text style={[styles.colorBlue, styles.font16Bold]}>
               Your cards
             </Text>
@@ -166,7 +174,6 @@ function Home(props) {
                   </View>
                   <View style={styles.cardOptionsRow}>
                     <Text style={[styles.colorBlue]}>Deactivate</Text>
-                    {/* <Image source={require('../imagess/slideLock.png')} /> */}
                     <SwitchCustom />
                   </View>
                 </View>
@@ -199,7 +206,12 @@ function Home(props) {
                 </View>
               </View>
             </View>
-          </View>
+          </View> */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
+          {/* 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888 */}
         </View>
         <Lastbar icons={icons} setIcons={setIcons} />
       </View>
@@ -243,7 +255,6 @@ const styles = StyleSheet.create({
   },
   background: {
     backgroundColor: '#E5F0FF',
-    // backgroundColor: 'black',
     display: 'flex',
     height: '100%',
     alignItems: 'center',
@@ -297,7 +308,7 @@ const styles = StyleSheet.create({
   },
   bottomCardHome: {
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: 'grey',
     padding: 20,
     marginBottom: 10,
     height: '50%',
@@ -401,7 +412,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    padding: 15,
+    padding: 13,
     backgroundColor: 'white',
   },
 });

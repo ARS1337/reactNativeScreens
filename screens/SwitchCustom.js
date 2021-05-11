@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import {Switch} from 'react-native';
+// import {Switch} from 'react-native';
+import {Switch} from 'react-native-switch';
 
 function SwitchCustom(props) {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -10,9 +11,20 @@ function SwitchCustom(props) {
       <Switch
         onValueChange={toggleSwitch}
         value={isEnabled}
-        thumbColor={'white'}
-        trackColor={{false: 'grey', true: 'grey'}}
-        style={{transform: [{scaleX: 0.8}, {scaleY: 0.8}]}}
+        circleSize={12}
+        activeText={''}
+        inActiveText={''}
+        backgroundActive={'#004481'}
+        backgroundInactive={'gray'}
+        circleBorderWidth={1}
+        innerCircleStyle={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderColor: 'grey',
+          paddingLeft: 3,
+        }}
+        switchLeftPx={3}
+        switchRightPx={3}
       />
     </>
   );

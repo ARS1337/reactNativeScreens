@@ -219,7 +219,12 @@ function TransactionList(props) {
       renderItem={({item}) => <Details item={item} />}
       keyExtractor={(item, index) => index}
       renderSectionHeader={({section: {title}}) => (
-        <View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
           <Text
             style={[
               styles.font16Bold,
@@ -232,6 +237,12 @@ function TransactionList(props) {
             ]}>
             {title}
           </Text>
+          {title == 'Last movements' ? (
+            <Image
+              style={{marginRight: 20}}
+              source={require('../imagess/IconFeatherSearch.png')}
+            />
+          ) : null}
         </View>
       )}
     />

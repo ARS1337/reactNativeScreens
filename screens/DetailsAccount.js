@@ -282,6 +282,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-evenly',
     alignItems: 'flex-start',
+    paddingBottom: 10,
   },
   flexRow: {
     flexDirection: 'row',

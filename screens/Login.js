@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginBottom: 10,
   },
   featherEye: {
     position: 'relative',
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
     color: '#004481',
     fontFamily: 'EuclidCircularA-Bold',
     fontSize: 30,
-    paddingTop: 30,
+    paddingTop: 25,
   },
   greetingExtended: {
     fontFamily: 'EuclidCircularA-Regular',
@@ -146,7 +145,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   passwordContainer: {
-    paddingTop: 40,
+    paddingTop: 20,
     flexDirection: 'column',
   },
   passwordInput: {
